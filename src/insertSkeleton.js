@@ -13,6 +13,15 @@ const insertSkeleton = (skeletonImageBase64, options) => {
 
   const skeletonClass = 'skeleton-remove-after-first-request';
 
+  const skeletonDestroyListener = options.autoDestroy ? `
+  // destroy after the onload event by default
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      window.SKELETON && SKELETON.destroy()
+    }, 0);
+  });
+  ` : '';
+
   const content = `
     <style>
       @keyframes flush {
@@ -56,19 +65,14 @@ const insertSkeleton = (skeletonImageBase64, options) => {
       // Define hooks
       window.SKELETON = {
         destroy: function () { // Manually destroy the skeleton
-          var removes = Array.from(document.body.querySelectorAll('.${skeletonClass}'));
+          var removes = [].slice.call(document.body.querySelectorAll('.${skeletonClass}'));
           removes && removes.map(function(item){
             document.body.removeChild(item);
           });
         }
       };
 
-      // destroy after the onload event by default
-      window.addEventListener('load', function(){
-        setTimeout(function(){
-          window.SKELETON && SKELETON.destroy()
-        }, 0);
-      });
+      ${skeletonDestroyListener}
     </script>`;
 
   // Code compression
