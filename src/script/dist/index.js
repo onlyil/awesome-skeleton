@@ -49,6 +49,7 @@
 
   // Delete element
   const removeElement = ele => {
+    if (!ele) return;
     const parent = ele.parentNode;
     if (parent) {
       parent.removeChild(ele);
