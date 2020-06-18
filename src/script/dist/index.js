@@ -80,6 +80,7 @@
   // Skeleton main color
   const MAIN_COLOR = '#EEEEEE';
   const MAIN_COLOR_RGB = 'rgb(238, 238, 238)';
+  const BG_COLOR = '#FFFFFF';
 
   // Pseudo-class style
   const PSEUDO_CLASS = 'sk-pseudo';
@@ -140,7 +141,8 @@
 
     let { backgroundColor: bgColor, width, height } = getComputedStyle(node);
 
-    bgColor = bgColor === 'rgba(0, 0, 0, 0)' ? MAIN_COLOR : bgColor;
+    // bgColor = bgColor === 'rgba(0, 0, 0, 0)' ? MAIN_COLOR : bgColor;
+    bgColor = MAIN_COLOR;
 
     node.style.backgroundColor = bgColor;
     node.style.color = bgColor;
@@ -479,6 +481,14 @@
       emptyHandler(node);
     }
 
+    // Handling container and content elements of user tags
+    if (hasAttr(node, 'data-skeleton-container')) {
+      node.style.background = BG_COLOR;
+    }
+    if (hasAttr(node, 'data-skeleton-content')) {
+      node.style.background = MAIN_COLOR;
+    }
+
     // Width is less than the hiding threshold
     const { width } = node.getBoundingClientRect();
     if (width < options.minGrayBlockWidth) {
@@ -540,7 +550,9 @@
       const switchElement = document.createElement('button');
       switchElement.innerHTML = '开始生成骨架图';
       Object.assign(switchElement.style, {
-        position: 'relative',
+        position: 'fixed',
+        top: 0,
+        left: 0,
         width: '100%',
         zIndex: 9999,
         color: '#FFFFFF',
@@ -656,6 +668,12 @@
     // Processing a single node
     handleNode(node) {
       if (!node) return;
+
+      // ignore comment node
+      if (node.nodeType === window.Node.COMMENT_NODE) return;
+
+      // ignore empty text node
+      if (node.nodeType === window.Node.TEXT_NODE && !node.textContent) return;
 
       // Delete elements that are not in first screen, or marked for deletion
       if (!inViewPort(node) || hasAttr(node, 'data-skeleton-remove')) {

@@ -38,7 +38,9 @@ window.AwesomeSkeleton = {
     const switchElement = document.createElement('button');
     switchElement.innerHTML = '开始生成骨架图';
     Object.assign(switchElement.style, {
-      position: 'relative',
+      position: 'fixed',
+      top: 0,
+      left: 0,
       width: '100%',
       zIndex: 9999,
       color: '#FFFFFF',
@@ -154,6 +156,12 @@ window.AwesomeSkeleton = {
   // Processing a single node
   handleNode(node) {
     if (!node) return;
+
+    // ignore comment node
+    if (node.nodeType === window.Node.COMMENT_NODE) return;
+
+    // ignore empty text node
+    if (node.nodeType === window.Node.TEXT_NODE && !node.textContent) return;
 
     // Delete elements that are not in first screen, or marked for deletion
     if (!inViewPort(node) || hasAttr(node, 'data-skeleton-remove')) {

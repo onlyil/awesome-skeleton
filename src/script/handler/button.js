@@ -10,7 +10,8 @@ function buttonHandler(node) {
 
   let { backgroundColor: bgColor, width, height } = getComputedStyle(node);
 
-  bgColor = bgColor === 'rgba(0, 0, 0, 0)' ? MAIN_COLOR : bgColor;
+  // bgColor = bgColor === 'rgba(0, 0, 0, 0)' ? MAIN_COLOR : bgColor;
+  bgColor = MAIN_COLOR;
 
   node.style.backgroundColor = bgColor;
   node.style.color = bgColor;
