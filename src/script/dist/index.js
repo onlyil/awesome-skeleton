@@ -581,6 +581,7 @@
     // Initialization processing DOM
     init() {
       this.cleanSkeletonContainer();
+      this.removeElements();
       styleHandler();
     },
 
@@ -590,6 +591,14 @@
       if (skeletonWrap) {
         removeElement(skeletonWrap);
       }
+    },
+
+    // Remove elements that defined in config
+    removeElements() {
+      const removeIds = this.options.removeIds;
+      removeIds.length && removeIds.forEach(id => {
+        removeElement(document.getElementById(id));
+      });
     },
 
     /**
@@ -673,7 +682,7 @@
       if (node.nodeType === window.Node.COMMENT_NODE) return;
 
       // ignore empty text node
-      if (node.nodeType === window.Node.TEXT_NODE && !node.textContent) return;
+      if (node.nodeType === window.Node.TEXT_NODE && /^\s*$/.test(node.textContent)) return;
 
       // Delete elements that are not in first screen, or marked for deletion
       if (!inViewPort(node) || hasAttr(node, 'data-skeleton-remove')) {

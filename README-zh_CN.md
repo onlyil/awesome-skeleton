@@ -143,6 +143,7 @@ $ npm run skeleton
 | debugTime | 否 | 0 | 调试模式下，页面停留在骨架图的时间 |
 | minGrayBlockWidth | 否 | 0 | 最小处理灰色块的宽度 |
 | minGrayPseudoWidth | 否 | 0 | 最小处理伪类宽 |
+| removeIds | 否 | [] | 需要移除的元素 id 数组 |
 
 ## dom 节点属性
 

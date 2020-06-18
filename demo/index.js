@@ -1,12 +1,13 @@
 const getSkeleton = require('../src/index');
 
 getSkeleton({
-  pageName: 'baidu',
-  pageUrl: 'https://www.baidu.com',
+  pageName: 'new_product',
+  pageUrl: 'http://local.beicang.com/xretail/new_product',
   openRepeatList: false,
   device: 'iPhone X', // 为空则使用默认 PC 页面打开
   minGrayBlockWidth: 80,
   minGrayPseudoWidth: 10,
+  removeIds: ['__vconsole'],
   debug: true,
   debugTime: 3000,
   cookies: [{
