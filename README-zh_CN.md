@@ -154,6 +154,8 @@ $ npm run skeleton
 | data-skeleton-bgcolor | 指定在某 dom 节点中添加的背景色 |
 | data-skeleton-ignore | 指定忽略不进行任何处理的 dom 节点属性 |
 | data-skeleton-empty | 将某dom的innerHTML置为空字符串 |
+| data-skeleton-container | 指定为容器元素，背景色设为白色 |
+| data-skeleton-content | 指定为内容元素，背景色设为灰色 |
 
 示例：
 

@@ -1,6 +1,7 @@
 import {
   MAIN_COLOR,
   MAIN_COLOR_RGB,
+  BG_COLOR,
 } from '../constants';
 
 import {
@@ -16,6 +17,14 @@ function beforeHandler(node, options) {
   // Handling empty elements of user tags
   if (hasAttr(node, 'data-skeleton-empty')) {
     handlerEmpty(node);
+  }
+
+  // Handling container and content elements of user tags
+  if (hasAttr(node, 'data-skeleton-container')) {
+    node.style.background = BG_COLOR;
+  }
+  if (hasAttr(node, 'data-skeleton-content')) {
+    node.style.background = MAIN_COLOR;
   }
 
   // Width is less than the hiding threshold

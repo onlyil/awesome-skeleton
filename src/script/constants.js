@@ -1,6 +1,7 @@
 // Skeleton main color
 export const MAIN_COLOR = '#EEEEEE';
 export const MAIN_COLOR_RGB = 'rgb(238, 238, 238)';
+export const BG_COLOR = '#FFFFFF';
 
 // Pseudo-class style
 export const PSEUDO_CLASS = 'sk-pseudo';

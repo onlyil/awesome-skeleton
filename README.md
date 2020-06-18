@@ -153,6 +153,8 @@ This is the main point of obtaining a high-quality skeleton. By setting the foll
 | data-skeleton-bgcolor | Specify the background color added in a dom node |
 | data-skeleton-ignore | Specifies to ignore dom node properties without any processing |
 | data-skeleton-empty | Set a dom's innerHTML to an empty string |
+| data-skeleton-container | Specifies as a container element and sets the background color to white |
+| data-skeleton-content | Specifies as the content element and sets the background color to gray |
 
 Example:
 
