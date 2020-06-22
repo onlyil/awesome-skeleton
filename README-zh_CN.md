@@ -144,6 +144,7 @@ $ npm run skeleton
 | minGrayBlockWidth | 否 | 0 | 最小处理灰色块的宽度 |
 | minGrayPseudoWidth | 否 | 0 | 最小处理伪类宽 |
 | removeIds | 否 | [] | 需要移除的元素 id 数组 |
+| autoDestroy | 否 | false | 页面 load 事件销毁骨架屏 |
 
 ## dom 节点属性
 
