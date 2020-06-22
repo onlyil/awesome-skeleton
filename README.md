@@ -143,6 +143,7 @@ OutputPath | no | skeleton-output | skeleton file output folder path, default to
 | minGrayBlockWidth | No | 0 | Minimum processing width of gray blocks |
 | minGrayPseudoWidth | No | 0 | Minimum processing pseudo-class width |
 | removeIds | No | [] | Array of element ids that need to be removed |
+| autoDestroy | No | false | The page Load event destroys the skeleton |
 
 ## dom node attribute
 
